@@ -31,6 +31,18 @@ class CircularInt
     CircularInt& operator/=(int value);
 
 
+    CircularInt& operator+=(const CircularInt& c);
+
+
+    CircularInt& operator-=(const CircularInt& c);
+
+
+    CircularInt& operator*=(const CircularInt& c);
+
+
+    CircularInt& operator/=(const CircularInt& c);
+
+
     int operator=(int value);
 
 
@@ -42,6 +54,7 @@ class CircularInt
 
     int operator*(int value);
 
+
     int operator/(int value);
 
 
@@ -51,13 +64,25 @@ class CircularInt
     int operator-(const CircularInt& c);
 
 
+    int operator*(const CircularInt& c);
+
+
     CircularInt& operator++(int value);
 
 
     CircularInt& operator--(int value);
 
+    int operator==(const CircularInt& c);
 
+    int operator!=(const CircularInt& c);
 
+    int operator>(const CircularInt& c);
+
+    int operator<(const CircularInt& c);
+
+    int operator<=(const CircularInt& c);
+
+    int operator>=(const CircularInt& c);
 };
 
 int operator+(int value, const CircularInt& c);
@@ -73,6 +98,8 @@ int operator/(int value, const CircularInt& c);
 
 ostream& operator<<(ostream& outs, const CircularInt& c);
 
+
+istream& operator>>(istream& in, const CircularInt& c);
 
 /*int main()
 {

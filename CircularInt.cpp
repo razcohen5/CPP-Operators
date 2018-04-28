@@ -69,6 +69,41 @@ using namespace std;
         }
     }
 
+    CircularInt& CircularInt :: operator+=(const CircularInt& c)
+    {
+        hour = (hour + c.hour)%maxhour;
+        return *this;
+    }
+
+    CircularInt& CircularInt :: operator-=(const CircularInt& c)
+    {   
+        int res = (hour - c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
+        return *this;
+    }
+
+    CircularInt& CircularInt :: operator*=(const CircularInt& c)
+    {
+        hour = (hour * c.hour)%maxhour;
+        return *this;
+    }
+
+    CircularInt& CircularInt :: operator/=(const CircularInt& c)
+    {
+        if(hour%c.hour==0)
+        {
+            hour = (hour / c.hour)%maxhour;
+            return *this;
+        }
+        else
+        {
+            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<c.hour<<"="<<hour<<endl;
+            exit(0);
+        }
+    }
+
     int CircularInt :: operator=(int value)
     {
         if(minhour<=value&&value<=maxhour)
@@ -116,6 +151,11 @@ using namespace std;
             return (hour-c.hour)%maxhour;
     }
 
+    int CircularInt :: operator*(const CircularInt& c)
+    {
+        return (hour*c.hour)%maxhour;
+    }
+
     CircularInt& CircularInt :: operator++(int value)
     {
         hour = (hour + 1)%maxhour;
@@ -129,6 +169,36 @@ using namespace std;
             res += 12;
         hour = res;
         return *this;
+    }
+
+    int CircularInt :: operator==(const CircularInt& c)
+    {
+        return hour==c.hour;
+    }
+
+    int CircularInt :: operator!=(const CircularInt& c)
+    {
+        return hour!=c.hour;
+    }
+
+    int CircularInt :: operator>(const CircularInt& c)
+    {
+        return hour>c.hour;
+    }
+
+    int CircularInt :: operator<(const CircularInt& c)
+    {
+        return hour<c.hour;
+    }
+
+    int CircularInt :: operator<=(const CircularInt& c)
+    {
+        return hour<=c.hour;
+    }
+
+    int CircularInt :: operator>=(const CircularInt& c)
+    {
+        return hour>=c.hour;
     }
 
 
@@ -164,6 +234,11 @@ int operator/(int value, const CircularInt& c)
 ostream& operator<<(ostream& outs, const CircularInt& c) 
 {
 	return outs << c.hour;
+}
+
+istream& operator>>(istream& in, CircularInt& c) 
+{
+	return in >> c.hour;
 }
 
 /*int main()
