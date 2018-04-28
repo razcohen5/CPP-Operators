@@ -137,13 +137,13 @@ using namespace std;
         return divide(*this,c.hour);
     }
 
-    CircularInt& CircularInt :: operator++(int value)
+    CircularInt& CircularInt :: operator++()
     {
         hour = arrange(hour+1,*this);
         return *this;
     }
 
-    CircularInt& CircularInt :: operator--(int value)
+    CircularInt& CircularInt :: operator--()
     {
         hour = arrange(hour-1,*this);
         return *this;

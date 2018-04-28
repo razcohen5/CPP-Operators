@@ -73,10 +73,9 @@ class CircularInt
     int operator/(const CircularInt& c);
 
 
-    CircularInt& operator++(int value);
+    CircularInt& operator++();
 
-
-    CircularInt& operator--(int value);
+    CircularInt& operator--();
 
     int operator==(const CircularInt& c);
 
