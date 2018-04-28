@@ -5,10 +5,9 @@ using namespace std;
 
 #include "CircularInt.hpp"
 
-
      CircularInt :: CircularInt(int a, int b)
     {
-        if(a>b||a<0||b<0)
+        if(a>=b||b<0)
         {
             minhour=1;
             maxhour=12;
@@ -23,10 +22,7 @@ using namespace std;
 
     int CircularInt :: operator-()
     {
-        int res = (-1*hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(-hour,*this);
     }
 
     ostream& CircularInt :: operator<<(CircularInt& c)
@@ -36,37 +32,25 @@ using namespace std;
 
     CircularInt& CircularInt :: operator=(const CircularInt& c)
     {
-        int res = c.hour%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(c.hour, *this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator+=(int value)
     {
-        int res = (hour + value)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour+value,*this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator-=(int value)
     {   
-        int res = (hour - value)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour-value,*this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator*=(int value)
     {
-        int res = (hour * value)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour*value,*this);
         return *this;
     }
     //letaken lemata
@@ -85,28 +69,19 @@ using namespace std;
 
     CircularInt& CircularInt :: operator+=(const CircularInt& c)
     {
-        int res = (hour + c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour+c.hour,*this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator-=(const CircularInt& c)
     {   
-        int res = (hour - c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour-c.hour,*this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator*=(const CircularInt& c)
     {
-        int res = (hour * c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour*c.hour,*this);
         return *this;
     }
     //letaken lemata
@@ -125,35 +100,22 @@ using namespace std;
 
     CircularInt& CircularInt :: operator=(int value)
     {
-        int res = value%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
-        return *this;
+        hour = arrange(value,*this);
     }
 
     int CircularInt :: operator+(int value)
     {
-        int res = (hour + value)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour+value,*this);
     }
 
     int CircularInt :: operator-(int value)
     {
-        int res = (hour - value)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour-value,*this);
     }
 
     int CircularInt :: operator*(int value)
     {
-        int res = (hour * value)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour*value,*this);
     }
     //letaken lemata
     int CircularInt :: operator/(int value)
@@ -168,150 +130,135 @@ using namespace std;
 
     int CircularInt :: operator+(const CircularInt& c)
     {
-        int res = (hour + c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour+c.hour,*this);
     }
 
     int CircularInt :: operator-(const CircularInt& c)
     {
-        int res = (hour - c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour-c.hour,*this);
     }
 
     int CircularInt :: operator*(const CircularInt& c)
     {
-        int res = (hour * c.hour)%maxhour;
-        if(res<=0)
-            res += 12;
-        return res;
+        return arrange(hour*c.hour,*this);
     }
 
     CircularInt& CircularInt :: operator++(int value)
     {
-        hour = (hour + 1)%maxhour;
+        hour = arrange(hour+1,*this);
         return *this;
     }
 
     CircularInt& CircularInt :: operator--(int value)
     {
-        int res = (hour - 1)%maxhour;
-        if(res<=0)
-            res += 12;
-        hour = res;
+        hour = arrange(hour-1,*this);
         return *this;
     }
 
     int CircularInt :: operator==(const CircularInt& c)
     {
-        return hour==c.hour;
+        return hour==arrange(c.hour,*this);
     }
 
     int CircularInt :: operator!=(const CircularInt& c)
     {
-        return hour!=c.hour;
+        return hour!=arrange(c.hour,*this);
     }
 
     int CircularInt :: operator>(const CircularInt& c)
     {
-        return hour>c.hour;
+        return hour>arrange(c.hour,*this);
     }
 
     int CircularInt :: operator<(const CircularInt& c)
     {
-        return hour<c.hour;
+        return hour<arrange(c.hour,*this);
     }
 
     int CircularInt :: operator<=(const CircularInt& c)
     {
-        return hour<=c.hour;
+        return hour<=arrange(c.hour,*this);
     }
 
     int CircularInt :: operator>=(const CircularInt& c)
     {
-        return hour>=c.hour;
+        return hour>=arrange(c.hour,*this);
     }
 
     int CircularInt :: operator==(int value)
     {
-        return hour==value;
+        return hour==arrange(value,*this);
     }
 
     int CircularInt :: operator!=(int value)
     {
-        return hour!=value;
+        return hour!=arrange(value,*this);
     }
 
     int CircularInt :: operator>(int value)
     {
-        return hour>value;
+        return hour>arrange(value,*this);
     }
 
     int CircularInt :: operator<(int value)
     {
-        return hour<value;
+        return hour<arrange(value,*this);
     }
 
     int CircularInt :: operator<=(int value)
     {
-        return hour<=value;
+        return hour<=arrange(value,*this);
     }
 
     int CircularInt :: operator>=(int value)
     {
-        return hour>=value;
+        return hour>=arrange(value,*this);
     }
 
 
 int operator==(int value,const CircularInt& c)
 {
-    return value==c.hour;
+    return arrange(value,c)==c.hour;
 }
 
 int operator!=(int value,const CircularInt& c)
 {
-    return value!=c.hour;
+    return arrange(value,c)!=c.hour;
 }
 
 int operator>(int value,const CircularInt& c)
 {
-    return value>c.hour;
+    return arrange(value,c)>c.hour;
 }
 
 int operator<(int value,const CircularInt& c)
 {
-    return value<c.hour;
+    return arrange(value,c)<c.hour;
 }
 
 int operator<=(int value,const CircularInt& c)
 {
-    value<=c.hour;
+    return arrange(value,c)<=c.hour;
 }
 
 int operator>=(int value,const CircularInt& c)
 {
-    return value>=c.hour;
+    return arrange(value,c)>=c.hour;
 }
 
 int operator+(int value, const CircularInt& c)
 {
-    return (value + c.hour)%c.maxhour;
+    return arrange(value+c.hour,c);
 }
 
 int operator-(int value, const CircularInt& c)
 {
-    int res = (value - c.hour)%c.maxhour;
-    if(res<=0)
-        res += 12;
-    return res;
+    return arrange(value-c.hour,c);
 }
 
 int operator*(int value, const CircularInt& c)
 {
-    return (value * c.hour)%c.maxhour;
+    return arrange(value*c.hour,c);
 }
 //letaken lemata
 int operator/(int value, const CircularInt& c)
@@ -335,6 +282,23 @@ istream& operator>>(istream& in, CircularInt& c)
     return in;
 }
 
+int arrange(int hour, const CircularInt& c)
+{
+    if(c.minhour<=hour&&hour<=c.maxhour)
+        return hour;
+
+    else if(hour<c.minhour)
+        return c.maxhour - (c.minhour - hour - 1)%(c.maxhour - c.minhour + 1);
+        
+    else
+        return c.minhour + (hour - c.maxhour - 1)%(c.maxhour - c.minhour + 1);
+}
+
+/*int main()
+{
+    CircularInt c {5, 7};
+    cout<<arrange(11,c);
+}*/
 /*int main()
 {
 CircularInt hour {1, 12};                 // <hour is an integer between 1 and 12, like an hour on the clock>

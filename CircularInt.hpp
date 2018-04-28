@@ -134,6 +134,8 @@ ostream& operator<<(ostream& outs, const CircularInt& c);
 
 istream& operator>>(istream& in, const CircularInt& c);
 
+int arrange(int hour, const CircularInt& c);
+
 /*int main()
 {
 CircularInt hour {1, 12};                 // <hour is an integer between 1 and 12, like an hour on the clock>
