@@ -268,6 +268,7 @@ ostream& operator<<(ostream& outs, const CircularInt& c)
 istream& operator>>(istream& in, CircularInt& c) 
 {
 	in >> c.hour;
+    c.hour = arrange(c.hour,c);
     return in;
 }
 
