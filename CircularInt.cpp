@@ -5,7 +5,7 @@ using namespace std;
 
 #include "CircularInt.hpp"
 
-     CircularInt :: CircularInt(int a, int b)
+    CircularInt :: CircularInt(int a, int b)
     {
         if(a>=b||b<0)
         {
@@ -107,9 +107,12 @@ using namespace std;
         return arrange(hour-value,*this);
     }
 
-    int CircularInt :: operator*(int value)
+    CircularInt CircularInt :: operator*(int value)
     {
-        return arrange(hour*value,*this);
+        CircularInt a (this->minhour,this->maxhour);
+        a.hour = this->hour;
+        a *= value;
+        return a;
     }
     //letaken lemata
     int CircularInt :: operator/(int value)
@@ -127,9 +130,12 @@ using namespace std;
         return arrange(hour-c.hour,*this);
     }
 
-    int CircularInt :: operator*(const CircularInt& c)
+    CircularInt CircularInt :: operator*(const CircularInt& c)
     {
-        return arrange(hour*c.hour,*this);
+        CircularInt a (this->minhour,this->maxhour);
+        a.hour = this->hour;
+        a *= c;
+        return a;
     }
 
     int CircularInt :: operator/(const CircularInt& c)
