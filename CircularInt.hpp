@@ -125,7 +125,7 @@ int operator+(int value, const CircularInt& c);
 int operator-(int value, const CircularInt& c);
 
 
-int operator*(int value, const CircularInt& c);
+CircularInt operator*(int value, const CircularInt& c);
 
 
 int operator/(int value, const CircularInt& c);

@@ -256,9 +256,12 @@ int operator-(int value, const CircularInt& c)
     return arrange(value-c.hour,c);
 }
 
-int operator*(int value, const CircularInt& c)
+CircularInt operator*(int value, const CircularInt& c)
 {
-    return arrange(value*c.hour,c);
+    CircularInt a (c.minhour,c.maxhour);
+    a.hour = c.hour;
+    a *= value;
+    return a;
 }
 //letaken lemata
 int operator/(int value, const CircularInt& c)
