@@ -19,6 +19,9 @@ class CircularInt
     ostream& operator<<(CircularInt& c);
 
 
+    CircularInt& operator=(const CircularInt& c);
+
+
     CircularInt& operator+=(int value);
 
 
@@ -43,7 +46,7 @@ class CircularInt
     CircularInt& operator/=(const CircularInt& c);
 
 
-    int operator=(int value);
+    CircularInt& operator=(int value);
 
 
     int operator+(int value);

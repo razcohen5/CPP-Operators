@@ -34,9 +34,21 @@ using namespace std;
         return cout<<c.hour;
     }
 
+    CircularInt& CircularInt :: operator=(const CircularInt& c)
+    {
+        int res = c.hour%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
+        return *this;
+    }
+
     CircularInt& CircularInt :: operator+=(int value)
     {
-        hour = (hour + value)%maxhour;
+        int res = (hour + value)%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
         return *this;
     }
 
@@ -51,10 +63,13 @@ using namespace std;
 
     CircularInt& CircularInt :: operator*=(int value)
     {
-        hour = (hour * value)%maxhour;
+        int res = (hour * value)%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
         return *this;
     }
-
+    //letaken lemata
     CircularInt& CircularInt :: operator/=(int value)
     {
         if(hour%value==0)
@@ -70,7 +85,10 @@ using namespace std;
 
     CircularInt& CircularInt :: operator+=(const CircularInt& c)
     {
-        hour = (hour + c.hour)%maxhour;
+        int res = (hour + c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
         return *this;
     }
 
@@ -85,10 +103,13 @@ using namespace std;
 
     CircularInt& CircularInt :: operator*=(const CircularInt& c)
     {
-        hour = (hour * c.hour)%maxhour;
+        int res = (hour * c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
         return *this;
     }
-
+    //letaken lemata
     CircularInt& CircularInt :: operator/=(const CircularInt& c)
     {
         if(hour%c.hour==0)
@@ -102,15 +123,21 @@ using namespace std;
         }
     }
 
-    int CircularInt :: operator=(int value)
+    CircularInt& CircularInt :: operator=(int value)
     {
-        if(minhour<=value&&value<=maxhour)
-            hour = value%maxhour;
+        int res = value%maxhour;
+        if(res<=0)
+            res += 12;
+        hour = res;
+        return *this;
     }
 
     int CircularInt :: operator+(int value)
     {
-        return (hour+value)%maxhour;
+        int res = (hour + value)%maxhour;
+        if(res<=0)
+            res += 12;
+        return res;
     }
 
     int CircularInt :: operator-(int value)
@@ -123,9 +150,12 @@ using namespace std;
 
     int CircularInt :: operator*(int value)
     {
-        return (hour*value)%maxhour;
+        int res = (hour * value)%maxhour;
+        if(res<=0)
+            res += 12;
+        return res;
     }
-
+    //letaken lemata
     int CircularInt :: operator/(int value)
     {
         if(hour%value==0)
@@ -138,19 +168,26 @@ using namespace std;
 
     int CircularInt :: operator+(const CircularInt& c)
     {
-        if(maxhour==c.maxhour)
-            return (hour+c.hour)%maxhour;
+        int res = (hour + c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        return res;
     }
 
     int CircularInt :: operator-(const CircularInt& c)
     {
-        if(maxhour==c.maxhour)
-            return (hour-c.hour)%maxhour;
+        int res = (hour - c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        return res;
     }
 
     int CircularInt :: operator*(const CircularInt& c)
     {
-        return (hour*c.hour)%maxhour;
+        int res = (hour * c.hour)%maxhour;
+        if(res<=0)
+            res += 12;
+        return res;
     }
 
     CircularInt& CircularInt :: operator++(int value)
@@ -276,7 +313,7 @@ int operator*(int value, const CircularInt& c)
 {
     return (value * c.hour)%c.maxhour;
 }
-
+//letaken lemata
 int operator/(int value, const CircularInt& c)
 {
     if(value%c.hour==0)
