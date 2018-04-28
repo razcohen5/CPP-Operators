@@ -88,7 +88,7 @@ using namespace std;
         if(d!=0)
             hour = d;
         else
-            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
+            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<c.hour<<"="<<hour<<endl;
         return *this;
     }
 
