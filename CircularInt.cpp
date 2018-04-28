@@ -65,7 +65,6 @@ using namespace std;
         else
         {
             cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
-            exit(0);
         }
     }
 
@@ -100,7 +99,6 @@ using namespace std;
         else
         {
             cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<c.hour<<"="<<hour<<endl;
-            exit(0);
         }
     }
 
@@ -135,7 +133,6 @@ using namespace std;
         else
         {
             cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
-            exit(0);
         }
     }
 
@@ -287,7 +284,6 @@ int operator/(int value, const CircularInt& c)
     else
     {
         cout<<"There is no number x in {"<<c.minhour<<","<<c.maxhour<<"} such that x*"<<value<<"="<<c.hour<<endl;
-        exit(0);
     }
 }
 
