@@ -83,6 +83,18 @@ class CircularInt
     int operator<=(const CircularInt& c);
 
     int operator>=(const CircularInt& c);
+
+    int operator==(int value);
+
+    int operator!=(int value);
+
+    int operator>(int value);
+
+    int operator<(int value);
+
+    int operator<=(int value);
+
+    int operator>=(int value);
 };
 
 int operator+(int value, const CircularInt& c);

@@ -201,6 +201,66 @@ using namespace std;
         return hour>=c.hour;
     }
 
+    int CircularInt :: operator==(int value)
+    {
+        return hour==value;
+    }
+
+    int CircularInt :: operator!=(int value)
+    {
+        return hour!=value;
+    }
+
+    int CircularInt :: operator>(int value)
+    {
+        return hour>value;
+    }
+
+    int CircularInt :: operator<(int value)
+    {
+        return hour<value;
+    }
+
+    int CircularInt :: operator<=(int value)
+    {
+        return hour<=value;
+    }
+
+    int CircularInt :: operator>=(int value)
+    {
+        return hour>=value;
+    }
+
+
+int operator==(int value,const CircularInt& c)
+{
+    return value==c.hour;
+}
+
+int operator!=(int value,const CircularInt& c)
+{
+    return value!=c.hour;
+}
+
+int operator>(int value,const CircularInt& c)
+{
+    return value>c.hour;
+}
+
+int operator<(int value,const CircularInt& c)
+{
+    return value<c.hour;
+}
+
+int operator<=(int value,const CircularInt& c)
+{
+    value<=c.hour;
+}
+
+int operator>=(int value,const CircularInt& c)
+{
+    return value>=c.hour;
+}
 
 int operator+(int value, const CircularInt& c)
 {
@@ -238,7 +298,8 @@ ostream& operator<<(ostream& outs, const CircularInt& c)
 
 istream& operator>>(istream& in, CircularInt& c) 
 {
-	return in >> c.hour;
+	in >> c.hour;
+    return in;
 }
 
 /*int main()
