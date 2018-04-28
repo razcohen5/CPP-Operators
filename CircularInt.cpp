@@ -265,10 +265,10 @@ ostream& operator<<(ostream& outs, const CircularInt& c)
 	return outs << c.hour;
 }
 
-istream& operator>>(istream& in, CircularInt& c) 
+istream& operator >> (istream& in, CircularInt& c) 
 {
-	in >> c.hour;
-    c.hour = arrange(c.hour,c);
+	in>>c.hour;
+    c.hour=arrange(c.hour,c);
     return in;
 }
 
