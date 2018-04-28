@@ -134,7 +134,7 @@ int operator/(int value, const CircularInt& c);
 ostream& operator<<(ostream& outs, const CircularInt& c);
 
 
-istream& operator>>(istream& in, const CircularInt& c);
+istream& operator>>(istream& in, CircularInt& c);
 
 int arrange(int hour, const CircularInt& c);
 
