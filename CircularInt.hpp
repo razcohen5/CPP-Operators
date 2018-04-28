@@ -55,7 +55,7 @@ class CircularInt
     int operator-(int value);
 
 
-    CircularInt operator*(int value);
+    int operator*(int value);
 
 
     int operator/(int value);
@@ -67,7 +67,7 @@ class CircularInt
     int operator-(const CircularInt& c);
 
 
-    CircularInt operator*(const CircularInt& c);
+    int operator*(const CircularInt& c);
 
     
     int operator/(const CircularInt& c);
@@ -125,7 +125,7 @@ int operator+(int value, const CircularInt& c);
 int operator-(int value, const CircularInt& c);
 
 
-CircularInt operator*(int value, const CircularInt& c);
+int operator*(int value, const CircularInt& c);
 
 
 int operator/(int value, const CircularInt& c);

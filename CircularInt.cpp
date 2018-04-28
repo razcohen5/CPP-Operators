@@ -51,7 +51,6 @@ using namespace std;
     CircularInt& CircularInt :: operator*=(int value)
     {
         hour = arrange(hour*value,*this);
-        cout<<hour<<endl;
         return *this;
     }
     //letaken lemata
@@ -80,7 +79,6 @@ using namespace std;
     CircularInt& CircularInt :: operator*=(const CircularInt& c)
     {
         hour = arrange(hour*c.hour,*this);
-        cout<<hour<<endl;
         return *this;
     }
     //letaken lemata
@@ -109,13 +107,10 @@ using namespace std;
         return arrange(hour-value,*this);
     }
 
-    CircularInt CircularInt :: operator*(int value)
+    int CircularInt :: operator*(int value)
     {
-        CircularInt a (this->minhour,this->maxhour);
-        a.hour = this->hour;
-        a *= value;
-        cout<<a<<endl;
-        return a;
+         
+        return arrange(hour*value,*this);
     }
     //letaken lemata
     int CircularInt :: operator/(int value)
@@ -133,13 +128,9 @@ using namespace std;
         return arrange(hour-c.hour,*this);
     }
 
-    CircularInt CircularInt :: operator*(const CircularInt& c)
+    int CircularInt :: operator*(const CircularInt& c)
     {
-        CircularInt a (this->minhour,this->maxhour);
-        a.hour = this->hour;
-        a *= c;
-        cout<<a<<endl;
-        return a;
+        return arrange(hour*c.hour,*this);
     }
 
     int CircularInt :: operator/(const CircularInt& c)
@@ -260,13 +251,9 @@ int operator-(int value, const CircularInt& c)
     return arrange(value-c.hour,c);
 }
 
-CircularInt operator*(int value, const CircularInt& c)
+int operator*(int value, const CircularInt& c)
 {
-    CircularInt a (c.minhour,c.maxhour);
-    a.hour = c.hour;
-    a *= value;
-    cout<<a<<endl;
-    return a;
+    return arrange(value*c.hour,c);
 }
 //letaken lemata
 int operator/(int value, const CircularInt& c)
