@@ -56,15 +56,12 @@ using namespace std;
     //letaken lemata
     CircularInt& CircularInt :: operator/=(int value)
     {
-        if(hour%value==0)
-        {
-            hour = (hour / value)%maxhour;
-            return *this;
-        }
+        int d = divide(*this,value);
+        if(d!=0)
+            hour = d;
         else
-        {
             cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
-        }
+        return *this;
     }
 
     CircularInt& CircularInt :: operator+=(const CircularInt& c)
@@ -87,15 +84,12 @@ using namespace std;
     //letaken lemata
     CircularInt& CircularInt :: operator/=(const CircularInt& c)
     {
-        if(hour%c.hour==0)
-        {
-            hour = (hour / c.hour)%maxhour;
-            return *this;
-        }
+        int d = divide(*this,c.hour);
+        if(d!=0)
+            hour = d;
         else
-        {
-            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<c.hour<<"="<<hour<<endl;
-        }
+            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
+        return *this;
     }
 
     CircularInt& CircularInt :: operator=(int value)
@@ -120,12 +114,7 @@ using namespace std;
     //letaken lemata
     int CircularInt :: operator/(int value)
     {
-        if(hour%value==0)
-           return (hour / value)%maxhour;
-        else
-        {
-            cout<<"There is no number x in {"<<minhour<<","<<maxhour<<"} such that x*"<<value<<"="<<hour<<endl;
-        }
+        return divide(*this,value);
     }
 
     int CircularInt :: operator+(const CircularInt& c)
@@ -141,6 +130,11 @@ using namespace std;
     int CircularInt :: operator*(const CircularInt& c)
     {
         return arrange(hour*c.hour,*this);
+    }
+
+    int CircularInt :: operator/(const CircularInt& c)
+    {
+        return divide(*this,c.hour);
     }
 
     CircularInt& CircularInt :: operator++(int value)
@@ -263,12 +257,7 @@ int operator*(int value, const CircularInt& c)
 //letaken lemata
 int operator/(int value, const CircularInt& c)
 {
-    if(value%c.hour==0)
-        return (value / c.hour)%c.maxhour;
-    else
-    {
-        cout<<"There is no number x in {"<<c.minhour<<","<<c.maxhour<<"} such that x*"<<value<<"="<<c.hour<<endl;
-    }
+    return divide(value,c);
 }
 
 ostream& operator<<(ostream& outs, const CircularInt& c) 
@@ -292,6 +281,22 @@ int arrange(int hour, const CircularInt& c)
         
     else
         return c.minhour + (hour - c.maxhour - 1)%(c.maxhour - c.minhour + 1);
+}
+
+int divide(int hour, const CircularInt& c)
+{
+    for(int i=c.minhour;i<=c.maxhour;i++)
+        if(i*c.hour==hour)
+            return i;
+    return 0;
+}
+
+int divide(const CircularInt& c, int hour)
+{
+    for(int i=c.minhour;i<=c.maxhour;i++)
+        if(i*hour==c.hour)
+            return i;
+    return 0;    
 }
 
 /*int main()

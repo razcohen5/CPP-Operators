@@ -69,6 +69,9 @@ class CircularInt
 
     int operator*(const CircularInt& c);
 
+    
+    int operator/(const CircularInt& c);
+
 
     CircularInt& operator++(int value);
 
@@ -135,6 +138,10 @@ ostream& operator<<(ostream& outs, const CircularInt& c);
 istream& operator>>(istream& in, const CircularInt& c);
 
 int arrange(int hour, const CircularInt& c);
+
+int divide(int hour, const CircularInt& c);
+
+int divide(const CircularInt& c, int hour);
 
 /*int main()
 {
